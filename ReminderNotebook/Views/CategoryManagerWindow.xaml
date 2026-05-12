@@ -1,0 +1,60 @@
+<Window x:Class="ReminderNotebook.Views.CategoryManagerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Керування категоріями" Height="450" Width="400"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <DockPanel Margin="20">
+        <TextBlock DockPanel.Dock="Top" Text="Категорії" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" />
+
+        <!-- Add Category Form -->
+        <Border DockPanel.Dock="Top" Background="#F5F5F5" Padding="15" CornerRadius="8" Margin="0,0,0,20">
+            <StackPanel>
+                <TextBlock Text="Нова категорія" FontWeight="Bold" Margin="0,0,0,10" />
+                <DockPanel>
+                    <Border x:Name="ColorPreviewBorder" Width="30" Height="30" CornerRadius="15" 
+                            Background="#607D8B" Margin="0,0,10,0" Cursor="Hand"
+                            MouseLeftButtonDown="OnColorPickerClick" ToolTip="Обрати колір" />
+                    <TextBox x:Name="NewCategoryNameTextBox" Padding="5" VerticalContentAlignment="Center" Margin="0,0,10,0" />
+                    <Button Content="Додати" Style="{StaticResource PrimaryButton}" Click="OnAddCategoryClick" />
+                </DockPanel>
+            </StackPanel>
+        </Border>
+
+        <Button DockPanel.Dock="Bottom" Content="Закрити" Style="{StaticResource SecondaryButton}" 
+                Click="OnCloseClick" HorizontalAlignment="Right" />
+
+        <!-- Categories List -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="CategoriesItemsControl">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="#EEEEEE" BorderThickness="0,0,0,1" Padding="0,10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <Border Width="20" Height="20" CornerRadius="10" 
+                                            Background="{Binding ColorHex}" Margin="0,0,10,0"
+                                            Cursor="Hand" MouseLeftButtonDown="OnEditCategoryColorClick" Tag="{Binding}" />
+                                    <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" 
+                                             Width="180" BorderThickness="0" Background="Transparent" 
+                                             VerticalAlignment="Center" LostFocus="OnCategoryNameLostFocus" Tag="{Binding}" />
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                    <Button Content="Зберегти" Style="{StaticResource SecondaryButton}" 
+                                            Margin="0,0,5,0" Click="OnSaveCategoryClick" Tag="{Binding}" />
+                                    <Button Content="Видалити" Style="{StaticResource SecondaryButton}" 
+                                            Foreground="#F44336" Click="OnDeleteCategoryClick" Tag="{Binding}" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </DockPanel>
+</Window>
