@@ -1,0 +1,33 @@
+<Window x:Class="ReminderNotebook.Views.ReminderEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Нагадування" Height="400" Width="350"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
+    <DockPanel Margin="20">
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,0,0">
+            <Button Content="Скасувати" Style="{StaticResource SecondaryButton}" Margin="0,0,10,0" Click="OnCancelClick" />
+            <Button Content="Зберегти" Style="{StaticResource PrimaryButton}" Click="OnSaveClick" />
+        </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="Повідомлення" FontWeight="Bold" Margin="0,0,0,5" />
+                <TextBox x:Name="MessageTextBox" Padding="8" Margin="0,0,0,15" />
+
+                <TextBlock Text="Дата" FontWeight="Bold" Margin="0,0,0,5" />
+                <DatePicker x:Name="TriggerDatePicker" Padding="5" Margin="0,0,0,15" />
+
+                <TextBlock Text="Час (ГГ:ХХ)" FontWeight="Bold" Margin="0,0,0,5" />
+                <TextBox x:Name="TriggerTimeTextBox" Padding="8" Margin="0,0,0,15" />
+
+                <CheckBox x:Name="IsRepeatingCheckBox" Content="Повторювати" VerticalContentAlignment="Center" 
+                      Margin="0,0,0,15" Checked="OnIsRepeatingChanged" Unchecked="OnIsRepeatingChanged" />
+
+                <StackPanel x:Name="IntervalPanel" Visibility="Collapsed">
+                    <TextBlock Text="Інтервал" FontWeight="Bold" Margin="0,0,0,5" />
+                    <ComboBox x:Name="RepeatIntervalComboBox" Padding="8" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>
