@@ -11,12 +11,14 @@ public partial class MainWindow : Window
     private readonly INoteService _noteService;
     private readonly ICategoryService _categoryService;
     private readonly IReminderService _reminderService;
+    private readonly IStatisticsService _statisticsService;
 
     public MainWindow(
         MainViewModel viewModel,
         INoteService noteService,
         ICategoryService categoryService,
-        IReminderService reminderService)
+        IReminderService reminderService,
+        IStatisticsService statisticsService)
     {
         InitializeComponent();
 
@@ -24,6 +26,7 @@ public partial class MainWindow : Window
         _noteService = noteService;
         _categoryService = categoryService;
         _reminderService = reminderService;
+        _statisticsService = statisticsService;
 
         DataContext = _viewModel;
     }
@@ -67,6 +70,14 @@ public partial class MainWindow : Window
         window.Owner = this;
         window.ShowDialog();
         _viewModel.Refresh();
+    }
+
+    private void OnStatisticsClick(object sender, RoutedEventArgs e)
+    {
+        var viewModel = new StatisticsViewModel(_statisticsService);
+        var window = new StatisticsWindow(viewModel);
+        window.Owner = this;
+        window.ShowDialog();
     }
 
     private void OnShowAllNotesClick(object sender, RoutedEventArgs e)

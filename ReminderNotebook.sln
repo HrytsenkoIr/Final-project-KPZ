@@ -1,8 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReminderNotebook", "ReminderNotebook\ReminderNotebook.csproj", "{12FF4CAD-975B-4CDB-A9DD-1B033ED7BA96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12FF4CAD-975B-4CDB-A9DD-1B033ED7BA96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12FF4CAD-975B-4CDB-A9DD-1B033ED7BA96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12FF4CAD-975B-4CDB-A9DD-1B033ED7BA96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12FF4CAD-975B-4CDB-A9DD-1B033ED7BA96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
