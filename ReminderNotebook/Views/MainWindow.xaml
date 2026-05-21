@@ -20,6 +20,10 @@
             <DockPanel Margin="15">
                 <TextBlock DockPanel.Dock="Top" Text="Категорії" FontSize="18" FontWeight="Bold" Margin="0,0,0,15" />
 
+                <Button DockPanel.Dock="Bottom" Content="Статистика" 
+                        Style="{StaticResource SecondaryButton}" 
+                        Click="OnStatisticsClick" Margin="0,15,0,0" />
+
                 <Button DockPanel.Dock="Bottom" Content="Керувати категоріями" 
                         Style="{StaticResource SecondaryButton}" 
                         Click="OnManageCategoriesClick" Margin="0,15,0,0" />

@@ -26,10 +26,11 @@ public partial class App : Application
         var reminderService = new ReminderService(reminderRepository, notifier);
         var noteService = new NoteService(noteRepository, reminderRepository);
         var notificationService = new NotificationService(reminderService, notifier);
+        var statisticsService = new StatisticsService(noteService);
 
         var mainViewModel = new MainViewModel(noteService, categoryService, notificationService);
 
-        var mainWindow = new MainWindow(mainViewModel, noteService, categoryService, reminderService);
+        var mainWindow = new MainWindow(mainViewModel, noteService, categoryService, reminderService, statisticsService);
         mainWindow.Show();
     }
 }
